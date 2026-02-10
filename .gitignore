@@ -1,0 +1,10 @@
+# Backend Laravel
+/backend/vendor/
+/backend/.env
+
+# Frontend React
+/frontend/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
