@@ -22,3 +22,14 @@ Route::prefix('auth')->group(function () {
         Route::put('/profile', [ProfileController::class, 'update']);
     });
 });
+
+// Learning & Quiz Routes (Outside auth for easier frontend testing during development, ideally should be inside auth:sanctum)
+use App\Http\Controllers\LearningController;
+use App\Http\Controllers\QuizController;
+
+Route::get('/progression', [LearningController::class, 'getProgression']);
+Route::get('/module/{id}', [LearningController::class, 'getModuleDetails']);
+
+Route::get('/quiz/{id}', [QuizController::class, 'getQuiz']);
+Route::post('/quiz/{id}/soumettre', [QuizController::class, 'submitQuiz']);
+Route::get('/resultat/{idTentative}', [QuizController::class, 'getResult']);

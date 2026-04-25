@@ -29,6 +29,10 @@ function PublicRoute({ children, redirectPath = "/dashboard" }) {
 }
 
 import { BrowserRouter as Router } from 'react-router-dom';
+import Apprentissage from './pages/Apprentissage.jsx';
+import DetailsModule from './pages/DetailsModule.jsx';
+import Quiz from './pages/Quiz.jsx';
+import Resultats from './pages/Resultats.jsx';
 
 function App() {
   return (
@@ -43,6 +47,12 @@ function App() {
           <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
             <Route path="/dashboard" element={<div>Dashboard - Bienvenue!</div>} />
             <Route path="/profile" element={<Profile />} />
+
+            {/* Learning Routes */}
+            <Route path="/apprentissage" element={<Apprentissage />} />
+            <Route path="/apprentissage/module/:id" element={<DetailsModule />} />
+            <Route path="/apprentissage/quiz/:id" element={<Quiz />} />
+            <Route path="/apprentissage/resultats/:idTentative?" element={<Resultats />} />
           </Route>
 
           {/* Default redirect */}

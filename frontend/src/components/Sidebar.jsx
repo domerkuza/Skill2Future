@@ -42,13 +42,13 @@ export default function Sidebar() {
                     <NavLink to="/dashboard" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
                         <i className="fas fa-th-large"></i> Tableau de bord
                     </NavLink>
-                    <NavLink to="/learning" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/apprentissage" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
                         <i className="fas fa-book"></i> Apprentissage
                     </NavLink>
-                    <NavLink to="/quiz" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/apprentissage" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
                         <i className="fas fa-question-circle"></i> Quiz
                     </NavLink>
-                    <NavLink to="/results" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
+                    <NavLink to="/apprentissage/resultats/1" className={({ isActive }) => `menu-item ${isActive ? 'active' : ''}`}>
                         <i className="fas fa-chart-bar"></i> Résultats
                     </NavLink>
                 </div>

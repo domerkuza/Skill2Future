@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
-const API = "http://127.0.0.1:8000/api/auth";
+const API = "/api/auth";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);

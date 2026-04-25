@@ -7,7 +7,7 @@ export default function ForgotPassword({ onClose }) {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState('email'); // 'email' or 'sent'
 
-  const API = "http://127.0.0.1:8000/api/auth";
+  const API = "/api/auth";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,9 +53,9 @@ export default function ForgotPassword({ onClose }) {
             <label className="block text-sm font-medium mb-2">Email</label>
             <div className="input-icon-wrapper">
               <i className="fas fa-envelope input-icon"></i>
-              <input 
-                type="email" 
-                className="form-control has-icon w-full" 
+              <input
+                type="email"
+                className="form-control has-icon w-full"
                 placeholder="votre@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -71,15 +71,15 @@ export default function ForgotPassword({ onClose }) {
           )}
 
           <div className="flex gap-3">
-            <button 
-              type="button" 
+            <button
+              type="button"
               onClick={onClose}
               className="flex-1 py-2 px-4 border border-gray-300 rounded-lg hover:bg-gray-50"
             >
               Annuler
             </button>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={loading}
               className="flex-1 auth-submit"
             >

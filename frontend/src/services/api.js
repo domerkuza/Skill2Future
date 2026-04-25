@@ -1,4 +1,4 @@
-const API_URL = 'http://127.0.0.1:8000/api/auth';
+const API_URL = '/api/auth';
 
 export const api = {
   // Inscription

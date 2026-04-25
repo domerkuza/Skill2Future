@@ -458,6 +458,7 @@ body {
   .auth-branding {
     display: none;
   }
+
   .auth-form-panel {
     padding: 30px;
   }
@@ -467,21 +468,27 @@ body {
   .auth-form-panel {
     padding: 24px;
   }
+
   .auth-form-wrapper {
     max-width: 100%;
   }
+
   .form-row {
     grid-template-columns: 1fr;
   }
+
   .social-login {
     flex-direction: column;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -498,4 +505,3 @@ body {
 .brand-feature:nth-child(3) .brand-feature-icon {
   animation-delay: 1s;
 }
-
