@@ -1,0 +1,59 @@
+name: SonarQube Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+      - test
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  sonarcloud:
+    name: Build, Test and Analyze
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Requis par SonarQube pour avoir l'historique complet
+
+      # --- 1. Préparation et Tests du Backend (PHP) ---
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: pcov     # Moteur de couverture très rapide pour PHP
+
+      - name: Install Composer dependencies
+        working-directory: ./backend
+        run: composer install --prefer-dist --no-progress --no-interaction
+
+      - name: Run PHP Tests with Coverage
+        working-directory: ./backend
+        run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: :memory:
+
+      # --- 2. Préparation et Tests du Frontend (React/Vite) ---
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install NPM dependencies
+        working-directory: ./frontend
+        run: npm install 
+
+      - name: Run React Tests with Coverage
+        working-directory: ./frontend
+        run: npm run test
+
+      # --- 3. Envoi de l'analyse à SonarQube ---
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Fourni par GitHub
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # À AJOUTER DANS LES SECRETS DE TON REPO
