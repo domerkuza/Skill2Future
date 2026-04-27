@@ -35,7 +35,7 @@ jobs:
         run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
         env:
           DB_CONNECTION: sqlite
-          DB_DATABASE: :memory:
+          DB_DATABASE: ':memory:'
 
       # --- 2. Préparation et Tests du Frontend (React/Vite) ---
       - name: Setup Node.js
