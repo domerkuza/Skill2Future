@@ -15,12 +15,14 @@ class QuizSeeder extends Seeder
     public function run()
     {
         // Disable FK checks to truncate
-        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        
         QuizResult::truncate();
         Option::truncate();
         Question::truncate();
         Quiz::truncate();
-        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
 
         $jsonPath = __DIR__ . '/quizzes_data.json';
         $quizzesData = json_decode(file_get_contents($jsonPath), true);

@@ -9,10 +9,10 @@ return new class extends Migration
 {
     public function up(): void
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('lessons');
         Schema::dropIfExists('modules');
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        Schema::enableForeignKeyConstraints();
 
         Schema::create('modules', function (Blueprint $table) {
             $table->id();

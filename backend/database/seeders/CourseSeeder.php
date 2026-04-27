@@ -15,12 +15,12 @@ class CourseSeeder extends Seeder
     public function run(): void
     {
         // Disable FK checks so truncate works even with existing constraints
-        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
         Lesson::truncate();
         Module::truncate();
         Course::truncate();
         UserCourse::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
 
         $courses = [
             [
